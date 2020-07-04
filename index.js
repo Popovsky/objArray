@@ -1,21 +1,19 @@
 'use strict';
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const arr = new Array(10).fill().map(() => Math.floor(Math.random() * 10));
 
 /**
  *
  * @param {array} array
- * @param {number} element
  * @param {number} index
  * @returns {array}
  */
-function pushElementToArrayByIndex(array, element, index) {
-    array.length++;
-    for (let i = array.length - 1; i > index; i--) {
-        array[i] = array[i - 1];
+function deleteElementToArrayByIndex(array, index) {
+    for (let i = index; i < array.length; i++) {
+        array[i] = array[i + 1];
     }
-    array[index] = element;
+    array.length--;
     return array;
 }
 
-pushElementToArrayByIndex(arr, 5, 2);
+deleteElementToArrayByIndex(arr, 4);
